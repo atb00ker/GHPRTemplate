@@ -1,0 +1,16 @@
+actions:
+- name: InsertGhpr
+  definition:
+    kind: synchronous
+    handler: http://{{ACTION_BASE_URL}}/InsertGhpr
+    forward_client_headers: true
+    headers:
+    - value: myadminsecretkey
+      name: Admin-Secret
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+  - name: ghprActionOutput
+  - name: InsertGhprOutput
+  scalars: []

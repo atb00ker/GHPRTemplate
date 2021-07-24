@@ -1,0 +1,8 @@
+- name: ghprdb
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgres://admin:admin@postgres:5432/ghpr
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include ghprdb/tables/tables.yaml"

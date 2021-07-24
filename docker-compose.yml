@@ -1,0 +1,39 @@
+version: '3.6'
+
+services:
+  postgres:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_DB=$DB_NAME
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASS
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  graphql-engine:
+    image: hasura/graphql-engine:v2.0.3
+    ports:
+    - "8080:8080"
+    depends_on:
+    - "postgres"
+    restart: always
+    environment:
+      - HASURA_GRAPHQL_METADATA_DATABASE_URL=postgres://$DB_USER:$DB_PASS@postgres:5432/$DB_NAME
+      - HASURA_GRAPHQL_ENABLE_CONSOLE=$DEBUG
+      - HASURA_GRAPHQL_DEV_MODE=$DEBUG
+    env_file:
+      - .env
+
+volumes:
+  postgres_data: {}
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16

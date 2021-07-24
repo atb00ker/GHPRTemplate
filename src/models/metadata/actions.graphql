@@ -1,0 +1,10 @@
+type Mutation {
+  InsertGhpr (
+    ghpr: String!
+  ): InsertGhprOutput
+}
+
+type InsertGhprOutput {
+  Id : uuid!
+  ghpr : String
+}

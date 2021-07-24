@@ -1,0 +1,3 @@
+table:
+  name: ghpr
+  schema: public
