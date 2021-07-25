@@ -3,6 +3,9 @@
 
 # Go Environment
 tmp/
+vendor/
+__debug_bin
+debug.test
 
 # Node environment
 .cache.json

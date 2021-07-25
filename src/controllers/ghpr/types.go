@@ -1,16 +1,13 @@
 package ghpr
 
-import "ghpr/src/controllers/graphql"
-
-type Uuid string
+import (
+	"ghpr/src/controllers/graphql"
+	"net/http"
+)
 
 type insertGhprOutput struct {
-	Id   Uuid    `json:"Id"`
-	Ghpr *string `json:"ghpr"`
-}
-
-type Mutation struct {
-	GhprAction *insertGhprOutput
+	Id   graphql.Uuid `json:"Id"`
+	Ghpr *string      `json:"ghpr"`
 }
 
 type insertGhprArgs struct {
@@ -34,4 +31,16 @@ type insertGhprOutputData struct {
 type insertGhprArgsResponse struct {
 	Data   insertGhprOutputData   `json:"data,omitempty"`
 	Errors []graphql.GraphQLError `json:"errors,omitempty"`
+}
+
+// Hasura
+type HasuraInterface interface {
+	insertGhpr(insertGhprArgs, []string) (insertGhprOutput, error)
+}
+
+type HasuraClient struct{}
+
+// HTTP Client
+type httpInterface interface {
+	Do(req *http.Request) (*http.Response, error)
 }

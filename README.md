@@ -18,11 +18,45 @@ Go-Hasura-Postgres-React Boilerplate Template
 - Build application image `docker-compose build`
 - Start application `docker-compose up`
 
+## Setup
+
+1. Run `npm install --include=dev` in the root of the repository.
+2. Get Go dependencies: `go mod tidy`
+3. Open a terminal and run:
+```bash
+npm run docker
+npm run hasura
+```
+4. On a second terminal:
+```bash
+npm run metadata
+npm run migrate
+npm run metadata-reload
+npm run actions
+```
+
+## Testing
+
+1. Run `npm install --include=dev` in the root of the repository.
+2. Get Go dependencies: `go mod tidy`
+3. Open a terminal and run:
+```bash
+npm run docker-test
+npm run hasura-test
+```
+4. On a second terminal:
+```bash
+npm run metadata-test
+npm run migrate-test
+npm run metadata-reload
+npm run actions-test
+```
+
 ## Creation
 
 1. Initialize NPM: `npm init`
 2. Install Hasura: `npm install hasura`
-3. Initialize Hasura: `npm `
+3. Initialize Hasura: `npx hasura init`
 4. Install React:
 ```bash
 npm install --save react react-dom react-router-dom react-use-websocket react-test-renderer
@@ -41,7 +75,6 @@ go get
 go install github.com/go-delve/delve/cmd/dlv
 go install github.com/pilu/fresh
 ```
-
 
 ### Example Queries
 

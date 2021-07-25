@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"ghpr/src/controllers/graphql"
 	"io/ioutil"
 	"net/http"
 )
@@ -17,7 +18,15 @@ func ensureValidBody(response http.ResponseWriter, request *http.Request) []byte
 	return requestBody
 }
 
-func insertGhpr(variables insertGhprArgs, auth []string) (response insertGhprOutput, err error) {
+func (c *HasuraClient) insertGhpr(variables insertGhprArgs,
+	auth []string) (response insertGhprOutput, err error) {
+	client := &http.Client{}
+	return sendInsertGhprRequest(variables, auth, client)
+}
+
+func sendInsertGhprRequest(variables insertGhprArgs, auth []string,
+	client httpInterface) (response insertGhprOutput, err error) {
+
 	reqBody := insertGhprArgsRequest{
 		Query:     "mutation ($ghpr: String!) {   insert_ghpr_one(object: {ghpr: $ghpr}) { Id, ghpr }}",
 		Variables: variables,
@@ -26,8 +35,8 @@ func insertGhpr(variables insertGhprArgs, auth []string) (response insertGhprOut
 	if err != nil {
 		return
 	}
-	client := http.Client{}
-	graphRequest, err := http.NewRequest("POST", "http://localhost:8080/v1/graphql", bytes.NewBuffer(reqBytes))
+
+	graphRequest, err := http.NewRequest("POST", graphql.Endpoint, bytes.NewBuffer(reqBytes))
 	if err != nil {
 		return
 	}
@@ -41,6 +50,7 @@ func insertGhpr(variables insertGhprArgs, auth []string) (response insertGhprOut
 	if err != nil {
 		return
 	}
+	defer resp.Body.Close()
 
 	respBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -48,8 +58,7 @@ func insertGhpr(variables insertGhprArgs, auth []string) (response insertGhprOut
 	}
 
 	var hasuraResponse insertGhprArgsResponse
-	err = json.Unmarshal(respBytes, &hasuraResponse)
-	if err != nil {
+	if err = json.Unmarshal(respBytes, &hasuraResponse); err != nil {
 		return
 	}
 

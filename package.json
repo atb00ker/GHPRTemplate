@@ -6,8 +6,20 @@
   "homepage": "https://github.com/atb00ker/GHPRTemplate#readme",
   "description": "GHPRTemplate",
   "scripts": {
-    "hasura": "hasura console --no-browser --log-level=DEBUG --envfile=.env",
-    "actions": "cd src/controllers && fresh src/controllers/ && cd -"
+    "docker": "docker-compose up -d",
+    "metadata": "hasura metadata apply --log-level=DEBUG",
+    "metadata-reload": "hasura metadata reload --log-level=DEBUG",
+    "migrate": "hasura migrate apply --log-level=DEBUG --all-databases",
+    "hasura": "hasura console --skip-update-check --no-browser --log-level=DEBUG",
+    "actions": "env-cmd fresh -c gofresh.config",
+    "docker-test": "docker-compose --env-file .env.test -f docker-compose.test.yml up -d",
+    "metadata-test": "npm run metadata -- --envfile=.env.test",
+    "migrate-test": "npm run migrate -- --envfile=.env.test && npm run metadata-reload -- --envfile=.env.test",
+    "actions-test": "env-cmd -f .env.test npm run test",
+    "integration-test": "env-cmd -f .env.test go test ./... -tags=integration_tests",
+    "unit-test": "env-cmd -f .env.test go test ./... -tags=unit_tests",
+    "coverage": "go test ./... -cover -tags=all_tests",
+    "test": "env-cmd -f .env.test npm run coverage"
   },
   "repository": {
     "type": "git",
@@ -40,6 +52,7 @@
     "@babel/preset-typescript": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "env-cmd": "^10.1.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "style-loader": "^3.2.1",

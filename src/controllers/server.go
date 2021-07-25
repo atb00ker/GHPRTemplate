@@ -2,13 +2,14 @@ package main
 
 import (
 	"ghpr/src/controllers/ghpr"
-	"log"
-	"net/http"
 )
 
+var httpRouter Router = NewMuxRouter()
+
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc(ghpr.InsertGhprPath, ghpr.InsertGhprAction)
-	err := http.ListenAndServe(":3000", mux)
-	log.Fatal(err)
+	// GHPR Routes
+	ghprCaller := ghpr.GhprCaller{Hasura: &ghpr.HasuraClient{}}
+	httpRouter.POST(ghpr.InsertGhprPath, ghprCaller.InsertGhprAction)
+	// Start Server
+	httpRouter.SERVE(":3000")
 }
