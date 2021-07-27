@@ -1,6 +1,16 @@
 version: '3.6'
 
 services:
+  actions:
+    image: atb00ker/ghpr-template
+    build:
+      context: .
+      dockerfile: Dockerfile.actions
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+
   db:
     image: postgres:alpine
     environment:
