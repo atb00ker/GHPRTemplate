@@ -1,10 +1,16 @@
+# Configurations
+.env
+
+# Go Environment
+tmp/
+vendor/
+__debug_bin
+debug.test
+
 # Node environment
 .cache.json
 node_modules
 .tm
-
-# Go Environment
-tmp/
 
 # Misc
 .DS_Store

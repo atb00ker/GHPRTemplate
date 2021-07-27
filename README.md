@@ -10,9 +10,15 @@ Go-Hasura-Postgres-React Boilerplate Template
 - docker-compose
 - go
 
-## Usage
+## Using template
 
-# TODO: Application Docker Image
+- Delete contents of `src/models/` and run `hasura` again.
+- Delete contents of `src/controllers/`.
+- Search for the keyword `gphr` and remove all instances.
+- Sample react code in [PERNTemplate views](https://github.com/atb00ker/PERNTemplate/tree/main/src/views).
+
+## Running Template
+## TODO: Dockerize go Application
 - Run `npm install` in the root of the repository.
 - Rename `.env.example` to .env and update configurations as per requirement.
 - Build application image `docker-compose build`
