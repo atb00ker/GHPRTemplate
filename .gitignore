@@ -11,6 +11,7 @@ debug.test
 .cache.json
 node_modules
 .tm
+dist/
 
 # Misc
 .DS_Store

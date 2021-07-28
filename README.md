@@ -16,11 +16,11 @@ Go-Hasura-Postgres-React Boilerplate Template
 - Delete contents of `src/controllers/`.
 - Search for the keyword `gphr` and remove all instances.
 - Sample react code in [PERNTemplate views](https://github.com/atb00ker/PERNTemplate/tree/main/src/views).
+- `.env.dev` should during development to run actions outside of containers.
 
 ## Running Template
-## TODO: Dockerize go Application
-- Run `npm install` in the root of the repository.
-- Rename `.env.example` to .env and update configurations as per requirement.
+
+- Rename `.env.example` to `.env` and update configurations as per requirement.
 - Build application image `docker-compose build`
 - Start application `docker-compose up`
 
@@ -67,7 +67,7 @@ npm run actions-test
 ```bash
 npm install --save react react-dom react-router-dom react-use-websocket react-test-renderer
 npm install --save typescript @types/node @types/react @types/react-dom @types/jest
-npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
+npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin dotenv-webpack
 npm install --save-dev @babel/core babel-loader @babel/preset-env @babel/preset-react @babel/preset-typescript
 npm install --save-dev css-loader style-loader file-loader
 npm install --save axios

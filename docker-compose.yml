@@ -2,10 +2,10 @@ version: '3.6'
 
 services:
   actions:
-    image: atb00ker/ghpr-template
+    image: atb00ker/ghpr
     build:
       context: .
-      dockerfile: Dockerfile.actions
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
     env_file:

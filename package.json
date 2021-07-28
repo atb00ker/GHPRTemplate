@@ -19,7 +19,10 @@
     "integration-test": "env-cmd -f .env.test go test ./... -tags=integration_tests",
     "unit-test": "env-cmd -f .env.test go test ./... -tags=unit_tests",
     "coverage": "go test ./... -cover -tags=all_tests",
-    "test": "env-cmd -f .env.test npm run coverage"
+    "test": "env-cmd -f .env.test npm run coverage",
+    "react-start": "webpack serve --open --mode development",
+    "react-build": "webpack --mode production",
+    "react-test": "jest --runInBand --detectOpenHandles"
   },
   "repository": {
     "type": "git",
@@ -31,21 +34,20 @@
   "bugs": {
     "url": "https://github.com/atb00ker/GHPRTemplate/issues"
   },
-  "dependencies": {
+  "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.1",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "axios": "^0.21.1",
+    "dotenv-webpack": "^7.0.3",
     "hasura-cli": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^17.0.2",
     "react-use-websocket": "^2.7.1",
-    "typescript": "^4.3.5"
-  },
-  "devDependencies": {
+    "typescript": "^4.3.5",
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-react": "^7.14.5",

@@ -4,11 +4,14 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        {/* <Route exact path="/" component={Ghpr} /> */}
-      </Switch>
-    </Router>
+    <React.Fragment> // Remove
+      Ghpr // Remove
+      <Router>
+        <Switch>
+          {/* <Route exact path="/" component={Ghpr} /> */}
+        </Switch>
+      </Router>
+    </React.Fragment> // Remove
   );
 };
 
