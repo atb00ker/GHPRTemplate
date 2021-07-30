@@ -71,6 +71,8 @@ npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugi
 npm install --save-dev @babel/core babel-loader @babel/preset-env @babel/preset-react @babel/preset-typescript
 npm install --save-dev css-loader style-loader file-loader
 npm install --save axios
+# GraphQL
+npm install --save-dev apollo-client react-apollo apollo-cache-inmemory apollo-link-http graphql-tag 
 # Testing
 npm install --save-dev @testing-library/react @testing-library/jest-dom jest react-test-renderer
 npm install --save @types/jest
