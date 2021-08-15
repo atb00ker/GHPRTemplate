@@ -1,5 +1,7 @@
 # Configurations
 .env
+.env.dev
+.eve.test
 
 # Go Environment
 tmp/

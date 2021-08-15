@@ -1,3 +1,7 @@
+# Configurations
+.env.dev
+.eve.test
+
 # Go Environment
 tmp/
 vendor/

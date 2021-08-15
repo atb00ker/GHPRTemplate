@@ -1,18 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
-const App = () => {
-  return (
-    <React.Fragment> // Remove
-      Ghpr // Remove
+import ApolloProvider from './components/ApolloProvider/ApolloProvider';
+import AuthProvider from './components/Auth/AuthProvider';
+
+const App = () => (
+  <AuthProvider>
+    <ApolloProvider>
       <Router>
-        <Switch>
-          {/* <Route exact path="/" component={Ghpr} /> */}
-        </Switch>
+        // Remove Ghpr // Remove
+        <Switch>{/* <Route exact path="/" component={Ghpr} /> */}</Switch>
       </Router>
-    </React.Fragment> // Remove
-  );
-};
+    </ApolloProvider>
+  </AuthProvider>
+);
 
 ReactDOM.render(<App />, document.getElementById('react-init'));

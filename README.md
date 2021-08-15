@@ -29,11 +29,14 @@ Go-Hasura-Postgres-React Boilerplate Template
 1. Run `npm install --include=dev` in the root of the repository.
 2. Get Go dependencies: `go mod tidy`
 3. Open a terminal and run:
+
 ```bash
 npm run docker
 npm run hasura
 ```
+
 4. On a second terminal:
+
 ```bash
 npm run metadata
 npm run migrate
@@ -46,11 +49,14 @@ npm run actions
 1. Run `npm install --include=dev` in the root of the repository.
 2. Get Go dependencies: `go mod tidy`
 3. Open a terminal and run:
+
 ```bash
 npm run docker-test
 npm run hasura-test
 ```
+
 4. On a second terminal:
+
 ```bash
 npm run metadata-test
 npm run migrate-test
@@ -64,20 +70,26 @@ npm run actions-test
 2. Install Hasura: `npm install hasura`
 3. Initialize Hasura: `npx hasura init`
 4. Install React:
+
 ```bash
 npm install --save react react-dom react-router-dom react-use-websocket react-test-renderer
 npm install --save typescript @types/node @types/react @types/react-dom @types/jest
 npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin dotenv-webpack
 npm install --save-dev @babel/core babel-loader @babel/preset-env @babel/preset-react @babel/preset-typescript
 npm install --save-dev css-loader style-loader file-loader
-npm install --save axios
+npm install --save axios prettier
 # GraphQL
-npm install --save-dev apollo-client react-apollo apollo-cache-inmemory apollo-link-http graphql-tag 
+npm install --save-dev apollo-client react-apollo apollo-cache-inmemory apollo-link-http graphql-tag
+# Auth
+npm install --save-dev @auth0/auth0-react
 # Testing
 npm install --save-dev @testing-library/react @testing-library/jest-dom jest react-test-renderer
 npm install --save @types/jest
+npm install --save @apollo/react-testing
 ```
+
 5. Setup Go development tools & dependencies:
+
 ```bash
 go get
 go install github.com/go-delve/delve/cmd/dlv

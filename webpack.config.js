@@ -24,19 +24,55 @@ module.exports = {
         use: { loader: 'babel-loader' }
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false
+        }
+      },
+      {
+        test: /\.s[ac]ss$/i,
         use: [
-          'style-loader',
-          'css-loader'
+          "style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+              sassOptions: {
+                fiber: false,
+              },
+            },
+          },
         ]
       },
       {
-        test: /\.(png|jpe?g|gif)$/,
-        loader: 'url-loader',
-        options: {
-          limit: '10000',
-          name: 'img/[name].[ext]'
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico)$/i,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images/'
+          }
+        }]
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            sources: true,
+          }
         }
       }
     ]
